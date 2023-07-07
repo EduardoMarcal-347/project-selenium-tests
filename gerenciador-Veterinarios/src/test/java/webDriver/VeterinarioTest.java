@@ -52,6 +52,34 @@ public class VeterinarioTest {
         assertEquals(campoPesquisado.getText(), "Conceição Evaristo");
     }
 
+    @Test
+    @DisplayName("Inserir novo veterinario")
+    public void inserirNovoVeterinario(){
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://localhost:8080/form");
+        String[] novoVet = {"Paulo Marcos", "Tratador de cavalos", "pm@gmail.com",  "10000"};
+
+        WebElement nome = driver.findElement(By.id("nome"));
+        WebElement email = driver.findElement(By.name("email"));
+        WebElement especialidade = driver.findElement(By.id("inputEspecialidade"));
+        WebElement salario = driver.findElement(By.id("inputSalario"));
+        WebElement btn = driver.findElement(By.cssSelector("button"));
+        nome.sendKeys(novoVet[0]);
+        especialidade.sendKeys(novoVet[1]);
+        email.sendKeys(novoVet[2]);
+        salario.sendKeys(novoVet[3]);
+        btn.submit();
+
+        WebElement trInserida = driver.findElement(By.cssSelector("tr:nth-child(4)"));
+        List <WebElement> tds = trInserida.findElements(By.cssSelector("td"));
+
+        assertEquals(novoVet[0] ,tds.get(0).getText());
+        assertEquals(novoVet[1] ,tds.get(1).getText());
+        assertEquals(novoVet[2] ,tds.get(2).getText());
+        assertEquals("R$"+novoVet[3].concat(".00") ,tds.get(3).getText());
+    }
+
 
 
 }
