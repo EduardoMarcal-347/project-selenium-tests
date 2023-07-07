@@ -1,0 +1,194 @@
+{
+  "id": "52263483-1d68-41ad-8d77-0afaac7b7fe2",
+  "version": "2.0",
+  "name": "Tests-Project",
+  "url": "https://www.google.com",
+  "tests": [{
+    "id": "1a4f8f6c-4575-4fe7-b975-912608d8986f",
+    "name": "Pesquisa Veterinario",
+    "commands": [{
+      "id": "3206408f-614e-4f90-8c32-e900faf0aeaf",
+      "comment": "",
+      "command": "open",
+      "target": "localhost:8080/find",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "51713402-2cac-40ae-b6e8-afd9947d86b5",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [],
+      "value": "Conceição Evaristo"
+    }, {
+      "id": "54f833e7-6571-407f-bdba-96eba9382f4f",
+      "comment": "",
+      "command": "submit",
+      "target": "css=button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04ac4ad8-cb02-4be2-aa3f-d384bcf78602",
+      "comment": "Verificando se foi retornado o veterinario pesquisado",
+      "command": "assertText",
+      "target": "css=td:nth-child(2) > span",
+      "targets": [
+        ["css=td:nth-child(2) > span", "css:finder"],
+        ["xpath=//td/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Conceição Evaristo')]", "xpath:innerText"]
+      ],
+      "value": "Conceição Evaristo"
+    }]
+  }, {
+    "id": "0cd60b3a-c91d-4f07-bf80-29eaac4117eb",
+    "name": "Cadastra Veterinario",
+    "commands": [{
+      "id": "40db7c3e-e468-476f-a0f1-cffe30936fb1",
+      "comment": "",
+      "command": "open",
+      "target": "localhost:8080/form",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a433352-f549-43a0-865a-84e0f680eb26",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [],
+      "value": "Eduardo Marçal"
+    }, {
+      "id": "bdc34037-8b12-4d4a-bf44-ee06a196f942",
+      "comment": "",
+      "command": "type",
+      "target": "name=email",
+      "targets": [],
+      "value": "edu@gmail.com"
+    }, {
+      "id": "cba47724-b840-4c45-af3c-81493d04c6a6",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputEspecialidade",
+      "targets": [],
+      "value": "Nutricionista animal"
+    }, {
+      "id": "a0bb90db-a6ee-436a-99a7-71c9fbca0fb9",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputSalario",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "b80a30e5-5e30-408a-bae4-79dd29007a1a",
+      "comment": "",
+      "command": "submit",
+      "target": "css=button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e037dd23-c619-470e-bf91-c896062f5b78",
+      "comment": "Verifica Nome cadastrado",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(2) > span",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(2) > span", "css:finder"],
+        ["xpath=//tr[4]/td/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Eduardo Marçal')]", "xpath:innerText"]
+      ],
+      "value": "Eduardo Marçal"
+    }, {
+      "id": "32e0fcc8-d136-411d-b26c-6221dcdd9c66",
+      "comment": "Verifica Especialidade cadastrada",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(3) > span",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(3) > span", "css:finder"],
+        ["xpath=//tr[4]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Nutricionista animal')]", "xpath:innerText"]
+      ],
+      "value": "Nutricionista animal"
+    }, {
+      "id": "a4abb67e-650c-40f6-9d35-d0d6f8912e69",
+      "comment": "Verifica Email cadastrado",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4) > span",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4) > span", "css:finder"],
+        ["xpath=//tr[4]/td[3]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'edu@gmail.com')]", "xpath:innerText"]
+      ],
+      "value": "edu@gmail.com"
+    }, {
+      "id": "f591b814-6090-4c24-89ad-11347ad39ad9",
+      "comment": "Verifica Salario cadastrado",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(5)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(5)", "css:finder"],
+        ["xpath=//tr[4]/td[4]", "xpath:position"],
+        ["xpath=//td[contains(.,'R$5000.00')]", "xpath:innerText"]
+      ],
+      "value": "R$5000.00"
+    }]
+  }, {
+    "id": "f7c15663-7cdd-40a1-bcf1-d08aafa6e840",
+    "name": "Altera Info Veterinario",
+    "commands": [{
+      "id": "ab145c52-407d-4a87-8002-304388d1de01",
+      "comment": "",
+      "command": "open",
+      "target": "localhost:8080/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9893d68a-9a82-4dfb-9c2b-9e24c2c3d4c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) .btn-warning > .fa",
+      "targets": [
+        ["css=tr:nth-child(2) .btn-warning > .fa", "css:finder"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe93ca46-fbd0-42ac-8d7a-bd1daaedb223",
+      "comment": "Alterando nome Veterinario",
+      "command": "type",
+      "target": "name=nome",
+      "targets": [],
+      "value": "Conceição Evaristo da Costa"
+    }, {
+      "id": "9d885e03-dacd-432d-b33f-234600bf2b4b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Atualizar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b203964-2efe-4c92-b6e4-60cd76775b32",
+      "comment": "Verificando se o nome foi atualizado",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td:nth-child(2) > span",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2) > span", "css:finder"],
+        ["xpath=//td/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Conceição Evaristo da Costa')]", "xpath:innerText"]
+      ],
+      "value": "Conceição Evaristo da Costa"
+    }]
+  }],
+  "suites": [{
+    "id": "863b5789-969d-432b-b33b-ecb5d6224185",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://www.google.com/"],
+  "plugins": []
+}
