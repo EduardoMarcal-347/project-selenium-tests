@@ -22,15 +22,14 @@ public class VeterinarioTest {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("http://localhost:8080/home");
-        List<WebElement> tr1 = driver.findElements(By.cssSelector("tbody > tr"));
+        List <WebElement> tds = driver.findElements(By.cssSelector("td"));
         String resultados[][] = {
                 {"Conceição Evaristo","pequenos","conceicao@gmail.com","R$3500.00"},
                 {"Erica Queiroz Pinto","grandes","erica@gmail.com", "R$4500.00"}
         };
         int i = 0;
 
-        for (WebElement tr : tr1){
-            List <WebElement> tds = driver.findElements(By.cssSelector("td"));
+        for (WebElement td : tds){
             assertEquals(resultados[i][0], tds.get(0).getText());
             assertEquals(resultados[i][1], tds.get(1).getText());
             assertEquals(resultados[i][2], tds.get(2).getText());
@@ -38,6 +37,21 @@ public class VeterinarioTest {
         }
     }
 
-    
+    @Test
+    @DisplayName("Realiza Pesquisa de um veterinario")
+    public void pesquisaVeterinario(){
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://localhost:8080/find");
+        WebElement nome = driver.findElement(By.id("nome"));
+        WebElement btn = driver.findElement(By.cssSelector("button"));
+        nome.sendKeys("Conceição Evaristo");
+        btn.submit();
+        WebElement campoPesquisado = driver.findElement(By.cssSelector("td:nth-child(2) > span"));
+
+        assertEquals(campoPesquisado.getText(), "Conceição Evaristo");
+    }
+
+
 
 }
